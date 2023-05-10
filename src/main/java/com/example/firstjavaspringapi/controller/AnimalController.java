@@ -9,9 +9,8 @@ import java.util.ArrayList;
 
 @RestController
 public class AnimalController {
-    AnimalService animalService;
+    private final AnimalService animalService;
 
-    @Autowired
     public AnimalController(AnimalService animalService) {
         this.animalService = animalService;
     }
@@ -31,9 +30,9 @@ public class AnimalController {
         return animalService.getAllAnimals();
     }
 
-    @PostMapping("/animal")
-    public Animal addAnimal(@RequestBody Animal animal) {
-        return animalService.addAnimal(animal);
+    @GetMapping("/{name}")
+    public Animal getAnimalbyName(@PathVariable String name) {
+        return animalService.getAnimalbyName(name);
     }
 
 }

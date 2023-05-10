@@ -6,8 +6,10 @@ import java.util.ArrayList;
 
 public interface AnimalService {
     public Animal getAnimalbyId(long id);
+    public Animal getAnimalbyName(String name);
 
     public ArrayList<Animal> getAllAnimals();
 
-    Animal addAnimal(Animal animal);
+    public Animal addAnimal(Animal animal);
+
 }

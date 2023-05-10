@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 @Service
 public class AnimalServiceImpl implements AnimalService {
@@ -15,6 +16,17 @@ public class AnimalServiceImpl implements AnimalService {
     public Animal getAnimalbyId(long id) {
         for (Animal animal : animals) {
             if (animal.getId() == id) {
+                return animal;
+            }
+        }
+
+        return null;
+    }
+
+    @Override
+    public Animal getAnimalbyName(String name) {
+        for (Animal animal : animals) {
+            if (Objects.equals(animal.getName(), name)) {
                 return animal;
             }
         }

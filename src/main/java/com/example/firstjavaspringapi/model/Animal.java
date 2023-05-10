@@ -1,7 +1,7 @@
 package com.example.firstjavaspringapi.model;
 
 public class Animal {
-    private long id;
+    private final long id;
     private String name;
     private int age;
 
