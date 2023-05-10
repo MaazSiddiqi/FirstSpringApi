@@ -25,14 +25,15 @@ public class AnimalController {
         return animalService.getAnimalbyId(id);
     }
 
+    @GetMapping("/{name}")
+    public Animal getAnimalbyName(@PathVariable String name) {
+        return animalService.getAnimalbyName(name);
+    }
+
     @GetMapping("/animals")
     public ArrayList<Animal> getAllAnimals() {
         return animalService.getAllAnimals();
     }
 
-    @GetMapping("/{name}")
-    public Animal getAnimalbyName(@PathVariable String name) {
-        return animalService.getAnimalbyName(name);
-    }
 
 }
