@@ -44,4 +44,19 @@ public class AnimalServiceImpl implements AnimalService {
         animals.add(animal);
         return animal;
     }
+
+    @Override
+    public void updateAnimal(Animal animal, long id) {
+        for (Animal animal1 : animals) {
+            if (animal1.getId() == id) {
+                animal1.setName(animal.getName());
+                animal1.setAge(animal.getAge());
+            }
+        }
+    }
+
+    @Override
+    public void deleteAnimal(long id) {
+        animals.removeIf(animal -> animal.getId() == id);
+    }
 }

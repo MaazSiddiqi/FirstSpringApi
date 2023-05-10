@@ -3,6 +3,7 @@ package com.example.firstjavaspringapi.controller;
 import com.example.firstjavaspringapi.model.Animal;
 import com.example.firstjavaspringapi.service.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -37,5 +38,26 @@ public class AnimalController {
     @GetMapping("/animals")
     public ArrayList<Animal> getAllAnimals() {
         return animalService.getAllAnimals();
+    }
+
+    // POST http://localhost:8080/animal
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/animal")
+    public Animal addAnimal(@RequestBody Animal animal) {
+        return animalService.addAnimal(animal);
+    }
+
+    // PUT http://localhost:8080/animal/{id}
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PutMapping("/animal/{id}")
+    public void updateAnimal(@RequestBody Animal animal, @PathVariable long id) {
+        animalService.updateAnimal(animal, id);
+    }
+
+    // DELETE http://localhost:8080/animal/{id}
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/animal/{id}")
+    public void deleteAnimal(@PathVariable long id) {
+        animalService.deleteAnimal(id);
     }
 }

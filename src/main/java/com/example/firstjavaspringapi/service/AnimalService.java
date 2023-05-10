@@ -12,4 +12,7 @@ public interface AnimalService {
 
     public Animal addAnimal(Animal animal);
 
+    public void updateAnimal(Animal animal, long id);
+
+    void deleteAnimal(long id);
 }
