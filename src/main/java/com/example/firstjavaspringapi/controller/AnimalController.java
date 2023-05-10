@@ -15,25 +15,27 @@ public class AnimalController {
         this.animalService = animalService;
     }
 
+    // GET http://localhost:8080/
     @GetMapping("/")
     public String helloWorld() {
         return "Welcome to my first Java Spring API! 🎉";
     }
 
+    // GET http://localhost:8080/animal?id={id}
     @GetMapping("/animal")
     public Animal getAnimalbyId(@RequestParam long id) {
         return animalService.getAnimalbyId(id);
     }
 
+    // GET http://localhost:8080/animal/{name}
     @GetMapping("/{name}")
     public Animal getAnimalbyName(@PathVariable String name) {
         return animalService.getAnimalbyName(name);
     }
 
+    // GET http://localhost:8080/animals
     @GetMapping("/animals")
     public ArrayList<Animal> getAllAnimals() {
         return animalService.getAllAnimals();
     }
-
-
 }
