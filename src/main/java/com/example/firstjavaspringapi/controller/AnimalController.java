@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
 @RestController
+@RequestMapping("/animals")
 public class AnimalController {
     private final AnimalService animalService;
 
@@ -16,45 +17,39 @@ public class AnimalController {
         this.animalService = animalService;
     }
 
-    // GET http://localhost:8080/
-    @GetMapping("/")
-    public String helloWorld() {
-        return "Welcome to my first Java Spring API! 🎉";
-    }
-
-    // GET http://localhost:8080/animal?id={id}
+    // GET http://localhost:8080/animals/animal?id={id}
     @GetMapping("/animal")
     public Animal getAnimalbyId(@RequestParam long id) {
         return animalService.getAnimalbyId(id);
     }
 
-    // GET http://localhost:8080/animal/{name}
+    // GET http://localhost:8080/animals/animal/{name}
     @GetMapping("/{name}")
     public Animal getAnimalbyName(@PathVariable String name) {
         return animalService.getAnimalbyName(name);
     }
 
-    // GET http://localhost:8080/animals
+    // GET http://localhost:8080/animals/animals
     @GetMapping("/animals")
     public ArrayList<Animal> getAllAnimals() {
         return animalService.getAllAnimals();
     }
 
-    // POST http://localhost:8080/animal
+    // POST http://localhost:8080/animals/animal
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/animal")
     public Animal addAnimal(@RequestBody Animal animal) {
         return animalService.addAnimal(animal);
     }
 
-    // PUT http://localhost:8080/animal/{id}
+    // PUT http://localhost:8080/animals/animal/{id}
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/animal/{id}")
     public void updateAnimal(@RequestBody Animal animal, @PathVariable long id) {
         animalService.updateAnimal(animal, id);
     }
 
-    // DELETE http://localhost:8080/animal/{id}
+    // DELETE http://localhost:8080/animals/animal/{id}
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/animal/{id}")
     public void deleteAnimal(@PathVariable long id) {
